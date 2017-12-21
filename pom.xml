@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.berryworks</groupId>
-            <artifactId>edireader-json</artifactId>
+            <artifactId>edireader-json-runnable</artifactId>
             <version>${edireader.json.version}</version>
         </dependency>
     </dependencies>

@@ -25,6 +25,7 @@ public class EdiToJsonDriver implements Runnable {
         final EdiToJson ediToJson = new EdiToJson();
         ediToJson.setFormatting(format);
         ediToJson.setAnnotated(annotate);
+        ediToJson.setSummarize(summarize);
         try (Reader reader = new FileReader(ediFile); Writer writer = new FileWriter(jsonFile)) {
             ediToJson.asJson(reader, writer);
         } catch (Exception e) {
@@ -39,16 +40,7 @@ public class EdiToJsonDriver implements Runnable {
         }
 
         // The first two args are the input and output filenames.
-        File ediFile = new File(args[0]);
-        if (!ediFile.exists() || !ediFile.canRead()) {
-            throw new RuntimeException("Cannot find or read EDI input file: " + ediFile.getAbsolutePath());
-        }
-        File jsonFile = new File(args[1]);
-        if (!jsonFile.canWrite()) {
-            throw new RuntimeException("Cannot write to Json output file: " + jsonFile.getAbsolutePath());
-        }
-
-        final EdiToJsonDriver driver = new EdiToJsonDriver(ediFile, jsonFile);
+      final EdiToJsonDriver driver = new EdiToJsonDriver(new File(args[0]), new File(args[1]));
 
         // Any remaining args beginning with "--" are treated as options
         for (int i = 2; i < args.length; i++) {
