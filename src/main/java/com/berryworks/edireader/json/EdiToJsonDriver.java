@@ -1,10 +1,6 @@
 package com.berryworks.edireader.json;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.Reader;
-import java.io.Writer;
+import java.io.*;
 
 public class EdiToJsonDriver implements Runnable {
     private final File ediFile;
@@ -29,7 +25,7 @@ public class EdiToJsonDriver implements Runnable {
         try (Reader reader = new FileReader(ediFile); Writer writer = new FileWriter(jsonFile)) {
             ediToJson.asJson(reader, writer);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -38,14 +34,14 @@ public class EdiToJsonDriver implements Runnable {
             badArgs();
             return;
         }
-
         // The first two args are the input and output filenames.
-      final EdiToJsonDriver driver = new EdiToJsonDriver(new File(args[0]), new File(args[1]));
-
+        final EdiToJsonDriver driver = new EdiToJsonDriver(new File(args[0]), new File(args[1]));
         // Any remaining args beginning with "--" are treated as options
         for (int i = 2; i < args.length; i++) {
             final String[] split = args[i].split("=");
-            if (split.length != 2) continue;
+            if (split.length != 2) {
+                continue;
+            }
             String optionName = split[0];
             String yesOrNo = split[1];
             switch (optionName) {
@@ -60,7 +56,6 @@ public class EdiToJsonDriver implements Runnable {
                     break;
             }
         }
-
         driver.run();
     }
 
@@ -83,7 +78,9 @@ public class EdiToJsonDriver implements Runnable {
     private static void log(Object... items) {
         StringBuilder sb = new StringBuilder();
         for (Object item : items) {
-            if (sb.length() > 0) sb.append(" ");
+            if (sb.length() > 0) {
+                sb.append(" ");
+            }
             sb.append(item.toString());
         }
         System.out.println(sb.toString());
