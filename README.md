@@ -42,7 +42,7 @@ GE*1*95071~
 IEA*1*000095071~
 ```
 
-Here is the JSON output produced by the Basic Edition.
+Here is the JSON output produced by the Basic Edition with the formatting and annotation options enabled.
 ```json
 {
   "interchanges": [
@@ -135,4 +135,152 @@ Here is the JSON output produced by the Basic Edition.
   ]
 }
 
+```
+
+Here is the output with the Premium Edition. Notice the annotions for the individual elements and the code values, as well as the N1-1000 and OTI-2000 loops.
+
+```json
+{
+  "interchanges": [
+    {
+      "ISA": "Interchange Control Header",
+      "ISA_01_AuthorizationQualifier": "00",
+      "ISA_02_AuthorizationInformation": "          ",
+      "ISA_03_SecurityQualifier": "00",
+      "ISA_04_SecurityInformation": "          ",
+      "ISA_05_SenderQualifier": "08",
+      "ISA_06_SenderId": "9254110060     ",
+      "ISA_07_ReceiverQualifier": "ZZ",
+      "ISA_08_ReceiverId": "123456789      ",
+      "ISA_09_Date": "041216",
+      "ISA_10_Time": "0805",
+      "ISA_11_StandardsId": "U",
+      "ISA_12_Version": "00501",
+      "ISA_13_InterchangeControlNumber": "000095071",
+      "ISA_14_AcknowledgmentRequested": "0",
+      "ISA_15_TestIndicator": "P",
+      "functional_groups": [
+        {
+          "GS": "Functional Group Header",
+          "GS_01_FunctionalIdentifierCode": "AG",
+          "GS_02_ApplicationSenderCode": "5137624388",
+          "GS_03_ApplicationReceiverCode": "123456789",
+          "GS_04_Date": "20041216",
+          "GS_05_Time": "0805",
+          "GS_06_GroupControlNumber": "95071",
+          "GS_07_ResponsibleAgencyCode": "X",
+          "GS_08_Version": "005010",
+          "transactions": [
+            {
+              "824": "Application Advice",
+              "ST": "Transaction Set Header",
+              "ST_01_TransactionSetIdentifierCode": "824",
+              "ST_02_TransactionSetControlNumber": "021390001",
+              "ST_03_ImplementationConventionReference": "005010X186A1",
+              "segments": [
+                {
+                  "BGN": "Beginning Segment",
+                  "BGN_01_description": "Transaction Set Purpose Code",
+                  "BGN_01": "11",
+                  "BGN_01_code_11": "Response",
+                  "BGN_02_description": "Reference Identification",
+                  "BGN_02": "FFA.ABCDEF.123456",
+                  "BGN_03_description": "Date",
+                  "BGN_03": "20020709",
+                  "BGN_04_description": "Time",
+                  "BGN_04": "0932",
+                  "BGN_06_description": "Reference Identification",
+                  "BGN_06": "123456789",
+                  "BGN_08_description": "Action Code",
+                  "BGN_08": "WQ",
+                  "BGN_08_code_WQ": "Accept"
+                },
+                {
+                  "N1-1000_loop": [
+                    {
+                      "N1": "Party Identification",
+                      "N1_01_description": "Entity Identifier Code",
+                      "N1_01": "41",
+                      "N1_01_code_41": "Submitter",
+                      "N1_02_description": "Name",
+                      "N1_02": "ABC INSURANCE",
+                      "N1_03_description": "Identification Code Qualifier",
+                      "N1_03": "46",
+                      "N1_03_code_46": "Electronic Transmitter Identification Number (ETIN)",
+                      "N1_04_description": "Identification Code",
+                      "N1_04": "111111111"
+                    },
+                    {
+                      "PER": "Administrative Communications Contact",
+                      "PER_01_description": "Contact Function Code",
+                      "PER_01": "IC",
+                      "PER_01_code_IC": "Information Contact",
+                      "PER_02_description": "Name",
+                      "PER_02": "JOHN JOHNSON",
+                      "PER_03_description": "Communication Number Qualifier",
+                      "PER_03": "TE",
+                      "PER_03_code_TE": "Telephone",
+                      "PER_04_description": "Communication Number",
+                      "PER_04": "8005551212",
+                      "PER_05_description": "Communication Number Qualifier",
+                      "PER_05": "EX",
+                      "PER_05_code_EX": "Telephone Extension",
+                      "PER_06_description": "Communication Number",
+                      "PER_06": "1439"
+                    }
+                  ]
+                },
+                {
+                  "N1-1000_loop": [
+                    {
+                      "N1": "Party Identification",
+                      "N1_01_description": "Entity Identifier Code",
+                      "N1_01": "40",
+                      "N1_01_code_40": "Receiver",
+                      "N1_02_description": "Name",
+                      "N1_02": "SMITHCO",
+                      "N1_03_description": "Identification Code Qualifier",
+                      "N1_03": "46",
+                      "N1_03_code_46": "Electronic Transmitter Identification Number (ETIN)",
+                      "N1_04_description": "Identification Code",
+                      "N1_04": "A1234"
+                    }
+                  ]
+                },
+                {
+                  "OTI-2000_loop": [
+                    {
+                      "OTI": "Original Transaction Identification",
+                      "OTI_01_description": "Application Acknowledgment Code",
+                      "OTI_01": "TA",
+                      "OTI_01_code_TA": "Transaction Set Accept",
+                      "OTI_02_description": "Reference Identification Qualifier",
+                      "OTI_02": "TN",
+                      "OTI_02_code_TN": "Transaction Reference Number",
+                      "OTI_03_description": "Reference Identification",
+                      "OTI_03": "NA",
+                      "OTI_06_description": "Date",
+                      "OTI_06": "20020709",
+                      "OTI_07_description": "Time",
+                      "OTI_07": "0902",
+                      "OTI_08_description": "Group Control Number",
+                      "OTI_08": "2",
+                      "OTI_09_description": "Transaction Set Control Number",
+                      "OTI_09": "0001",
+                      "OTI_10_description": "Transaction Set Identifier Code",
+                      "OTI_10": "834",
+                      "OTI_10_code_834": "Benefit Enrollment and Maintenance",
+                      "OTI_11_description": "Version / Release / Industry Identifier Code",
+                      "OTI_11": "005010X220A1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
