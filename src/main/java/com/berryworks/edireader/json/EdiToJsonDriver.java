@@ -56,7 +56,11 @@ public class EdiToJsonDriver implements Runnable {
                     break;
             }
         }
-        driver.run();
+        try {
+            driver.run();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     private static void badArgs() {
