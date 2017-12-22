@@ -1,3 +1,10 @@
+* [Intro](#edi-to-json)
+* [Features](#feature-summary)
+* [Editions](#basic-and-premium-editions)
+* [Example](#a-small-example)
+* [Command Line](#command-line-interface)
+* [Notes](#technical-notes)
+
 # EDI to JSON
 This project provides a Java program that serializes EDI input into JSON output. 
 The source code in this project is a small driver that illustrates the Java API used to call the EDI to JSON transformer.
