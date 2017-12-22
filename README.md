@@ -9,4 +9,8 @@ runnable jar with the driver program providing a command line interface.
 * Formatting - the JSON output may be formatted for human readability
 * X12 and EDIFACT - both of the major EDI standards are supported
 * Segment looping - the JSON may reflect the segment looping structures within an EDI transaction
-* Annotations - the JSON may include additional key/value pairs to provide descriptive meta-data regarding the EDI documents, segments, and elements.
+* Annotation - the JSON may include additional key:value pairs to provide descriptive meta-data regarding the EDI documents, segments, and elements. For example:
+  - "837": "Health Care Claim"
+  - "N4": "Geographic Location"
+  - "N4_01_description": "City Name"
+  
