@@ -1,9 +1,9 @@
-* [Intro](#edi-to-json)
-* [Features](#feature-summary)
-* [Editions](#basic-and-premium-editions)
-* [Example](#a-small-example)
-* [Command Line](#command-line-interface)
-* [Notes](#technical-notes)
+[Intro](#edi-to-json)
+| [Features](#feature-summary)
+| [Editions](#basic-and-premium-editions)
+| [Example](#a-small-example)
+| [Command Line](#command-line-interface)
+| [Notes](#technical-notes)
 
 # EDI to JSON
 EDI transactions can be transformed, or *serialized*, into JSON objects to simplify processing and/or increase human readability.
