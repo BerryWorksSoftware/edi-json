@@ -25,12 +25,12 @@ The jar provided with this project is a free and fully usable basic edition, and
 Here is a summary of the differences.
 
 Feature | Basic  | Premium
---------|--------|--------
+|:-------|:-------|:-------
 Formatting | yes | yes
 X12        | yes | yes
 EDIFACT    | yes | yes
 Annotation | limited | extensive
-Segment loops shown in JSON | no | yes 
+Segment loops | no | yes 
   
 ## A Small Example
 Here is a small EDI sample, an X12 interchange containing a single 824 Application Advice transaction.
