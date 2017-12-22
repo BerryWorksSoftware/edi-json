@@ -6,11 +6,9 @@
 * [Notes](#technical-notes)
 
 # EDI to JSON
-This project provides a Java program that serializes EDI input into JSON output. 
-The source code in this project is a small driver that illustrates the Java API used to call the EDI to JSON transformer.
-That transformer is provided as a jar file (without source code) which can be used in your own Java application. 
-The jar is also a self-contained
-runnable jar with the driver program providing a command line interface.
+EDI transactions can be transformed, or *serialized*, into JSON objects to simplify processing and/or increase human readability.
+This project's [Java program](https://github.com/BerryWorksSoftware/edi-json/blob/master/src/main/java/com/berryworks/edireader/json/EdiToJsonDriver.java) illustrates how to use a Java API for a transforming your EDI into JSON
+and provides a file-based [command line tool](#command-line-interface) in the form of a runnable jar. 
 
 ## Feature Summary
 * Formatting - the JSON output may be formatted for human readability
