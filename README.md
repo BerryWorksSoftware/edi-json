@@ -294,7 +294,7 @@ Here is the output with the Premium Edition. Notice the annotions for the indivi
 ## Command Line Interface
 The jar is runnable with Java 7 or later with the following command line arguments.
 
-java -jar edireader-json-5.5.4-basic.jar   *edi-input-file*  *json-output-file* *option...*
+**java -jar edireader-json-5.5.4-basic.jar**   *edi-input-file*  *json-output-file* *option...*
 
 where *option* is zero or more of
 ```
