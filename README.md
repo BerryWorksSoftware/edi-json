@@ -9,7 +9,7 @@ runnable jar with the driver program providing a command line interface.
 * Formatting - the JSON output may be formatted for human readability
 * X12 and EDIFACT - both of the major EDI standards are supported
 * Segment looping - the JSON may reflect the segment looping structures within an EDI transaction
-* Annotation - the JSON may include additional key:value pairs to provide descriptive meta-data regarding the EDI documents, segments, and elements. For example:
+* Annotation - the JSON may include key:value pairs with descriptive meta-data for the EDI documents, segments, and elements. For example:
   - "824": "Application Advice"
   - "PER": "Administrative Communications Contact"
   - "PER_04_description": "Communication Number"
@@ -297,3 +297,14 @@ where *option* is zero or more of
 --annotate={yes|no}  annotate JSON ouptut (default: no)
 --summarize={yes|no}  omit segment-level detail after first segment (default: no}
 ```
+
+## Technical Notes
+* supports multiple interchanges, functional groups, and transactions
+* automatic syntax detection
+* very fast
+* handles large volumes
+* API supports streamed input and output
+* depends only on Java Runtime Environment 7 or later
+* intellectual property of BerryWorks Software
+* EDI parsing handled by BerryWorks Software's EDIReader
+* source code licenses are available
