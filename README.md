@@ -14,3 +14,15 @@ runnable jar with the driver program providing a command line interface.
   - "N4": "Geographic Location"
   - "N4_01_description": "City Name"
   
+## Basic and Premium Editions
+The jar provided with this project is a free and fully usable basic edition, and a premium edition is coming soon.
+Here is a summary of the differences.
+
+Feature | Basic  | Premium
+--------|--------|--------
+Formatting | yes | yes
+X12        | yes | yes
+EDIFACT    | yes | yes
+Annotation | limited | extensive
+Segment loops shown in JSON | no | yes 
+  
