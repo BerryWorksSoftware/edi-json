@@ -1,16 +1,14 @@
-* [Intro](#edi-to-json)
-* [Features](#feature-summary)
-* [Editions](#basic-and-premium-editions)
-* [Example](#a-small-example)
-* [Command Line](#command-line-interface)
-* [Notes](#technical-notes)
+[Intro](#edi-to-json)
+| [Features](#feature-summary)
+| [Editions](#basic-and-premium-editions)
+| [Example](#a-small-example)
+| [Command Line](#command-line-interface)
+| [Notes](#technical-notes)
 
 # EDI to JSON
-This project provides a Java program that serializes EDI input into JSON output. 
-The source code in this project is a small driver that illustrates the Java API used to call the EDI to JSON transformer.
-That transformer is provided as a jar file (without source code) which can be used in your own Java application. 
-The jar is also a self-contained
-runnable jar with the driver program providing a command line interface.
+EDI transactions can be transformed, or *serialized*, into JSON objects to simplify processing and/or increase human readability.
+This project's [Java program](https://github.com/BerryWorksSoftware/edi-json/blob/master/src/main/java/com/berryworks/edireader/json/EdiToJsonDriver.java) illustrates how to use a Java API for a transforming your EDI into JSON
+and provides a file-based [command line tool](#command-line-interface) in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/edireader-json-5.5.4-basic.jar). 
 
 ## Feature Summary
 * Formatting - the JSON output may be formatted for human readability
@@ -27,12 +25,12 @@ The jar provided with this project is a free and fully usable basic edition, and
 Here is a summary of the differences.
 
 Feature | Basic  | Premium
---------|--------|--------
+|:-------|:-------|:-------
 Formatting | yes | yes
 X12        | yes | yes
 EDIFACT    | yes | yes
 Annotation | limited | extensive
-Segment loops shown in JSON | no | yes 
+Segment loops | no | yes 
   
 ## A Small Example
 Here is a small EDI sample, an X12 interchange containing a single 824 Application Advice transaction.
@@ -296,7 +294,7 @@ Here is the output with the Premium Edition. Notice the annotions for the indivi
 ## Command Line Interface
 The jar is runnable with Java 7 or later with the following command line arguments.
 
-java -jar edireader-json-5.5.4-basic.jar   *edi-input-file*  *json-output-file* *option...*
+**java -jar edireader-json-5.5.4-basic.jar**   *edi-input-file*  *json-output-file* *option...*
 
 where *option* is zero or more of
 ```
