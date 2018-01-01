@@ -3,12 +3,17 @@
 | [Editions](#basic-and-premium-editions)
 | [Example](#a-small-example)
 | [Command Line](#command-line-interface)
+| [RESTful API](#rest-api-accessing-an-edi-to-json-microservice)
 | [Notes](#technical-notes)
 
 # EDI to JSON
 EDI transactions can be transformed, or *serialized*, into JSON objects to simplify processing and/or increase human readability.
-This project's [Java program](https://github.com/BerryWorksSoftware/edi-json/blob/master/src/main/java/com/berryworks/edireader/json/EdiToJsonDriver.java) illustrates how to use a Java API for a transforming your EDI into JSON
-and provides a file-based [command line tool](#command-line-interface) in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/edireader-json-5.5.4-basic.jar). 
+This project provides a [Java program](https://github.com/BerryWorksSoftware/edi-json/blob/master/src/main/java/com/berryworks/edireader/json/EdiToJsonDriver.java)
+that illustrates how to use a Java API for transforming your EDI into JSON
+and provides a file-based [command line tool](#command-line-interface)
+in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/edireader-json-5.5.4-basic.jar). 
+There is also a [RESTful API](#rest-api-accessing-an-edi-to-json-microservice)
+pre-release to a microservice performing the same EDI to JSON transformations. 
 
 ## Feature Summary
 * Formatting - the JSON output may be formatted for human readability
@@ -298,10 +303,18 @@ The jar is runnable with Java 7 or later with the following command line argumen
 
 where *option* is zero or more of
 ```
---format={yes|no}   format JSON output (default: yes)
+--formatted={yes|no}   format JSON output (default: yes)
 --annotate={yes|no}  annotate JSON ouptut (default: no)
 --summarize={yes|no}  omit segment-level detail after first segment (default: no}
 ```
+
+### REST API accessing an EDI to JSON Microservice
+EDI to JSON transformations are also available via a cloud-based microservice, accessible via a RESTful API.
+The EDI input is submitted as the message body with a POST method, and the JSON is returned as the body of the response.
+
+Currently, the basic edition is available for testing and comments in pre-release version.
+A Java client included in this project show hows how to access this pre-release, currently deployed at
+https://kxfqaddyyc.execute-api.us-east-2.amazonaws.com/Preview/berryworks/edi-to-json
 
 ## Technical Notes
 * supports multiple interchanges, functional groups, and transactions
