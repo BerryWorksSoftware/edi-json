@@ -6,27 +6,50 @@
 | [RESTful API](#rest-api-accessing-an-edi-to-json-microservice)
 | [Notes](#technical-notes)
 
-# EDI to JSON
+# EDI -> JSON and JSON -> EDI
 EDI transactions can be transformed, or *serialized*, into JSON objects to simplify processing and/or increase human readability.
 This project provides a [Java program](https://github.com/BerryWorksSoftware/edi-json/blob/master/src/main/java/com/berryworks/edireader/json/EdiToJsonDriver.java)
 that illustrates how to use a Java API for transforming your EDI into JSON
 and provides a file-based [command line tool](#command-line-interface)
 in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/edireader-json-5.5.4-basic.jar). 
 There is also a [RESTful API](#rest-api-accessing-an-edi-to-json-microservice)
-pre-release to a microservice performing the same EDI to JSON transformations. 
+to a microservice performing the same EDI to JSON transformations. 
+ 
+The reverse transformation, producing EDI from JSON input, is also supported in the Premium Edition
+described below.
 
-## Feature Summary
-* Formatting - the JSON output may be formatted for human readability
-* X12 and EDIFACT - both of the major EDI standards are supported
-* Segment looping - the JSON may reflect the segment looping structures within an EDI transaction
-* Annotation - the JSON may include key:value pairs with descriptive meta-data for the EDI documents, segments, and elements. For example:
+## Feature Summary for EDI to JSON
+* Formatting
+  - the JSON output may be formatted for human readability
+  - feature is optional, allowing for smaller output files
+* Multiple EDI standards are supported
+  - ANSI X12
+  - EDIFACT
+  - potentially others given sufficient interest (HL7, TRADACOMS)
+* Segment looping
+  - JSON output reflects the segment looping structures within the EDI transactions
+  - version aware; for example, 4010 versus 5010
+* Enhanced support for the X12 HIPAA health care transactions
+  - 270, 271, 276, 277, 278, 834, 835, 837
+  - JSON reflects loop qualifiers; for example, 2010BA versus 2010BB
+  - JSON nesting of HL loops based on the logical hierarchy expressed within the HL segments
+* Annotations - (optional) meta-data for the EDI documents. For example:
   - "824": "Application Advice"
   - "PER": "Administrative Communications Contact"
   - "PER_04_description": "Communication Number"
   - "PER_03_code_TE": "Telephone"
+* Supports multiple ...
+  - transactions per functional group
+  - functional groups per interchange
+  - interchanges per file
+* High throughput, efficient use of resources
+  - serializes EDI to JSON for arbitrarily large input streams
+  - no in-memory data structures that grow in proportion to volume
+  - no disk-IO beyond reading/writing input/output streams 
   
 ## Basic and Premium Editions
-The jar provided with this project is a free and fully usable basic edition, and a premium edition is coming soon.
+The jar provided with this project is a free and fully usable Basic Edition.
+A Premium Edition is also available for licensing. Contact json@canabrook.org for details.
 Here is a summary of the differences.
 
 Feature | Basic  | Premium
@@ -35,7 +58,9 @@ Formatting | yes | yes
 X12        | yes | yes
 EDIFACT    | yes | yes
 Annotation | limited | extensive
-Segment loops | no | yes 
+Segment loops vislble in JSON | no | yes
+Enhanced X12 HIPAA features| no | yes
+JSON to EDI (see below)| no | yes
   
 ## A Small Example
 Here is a small EDI sample, an X12 interchange containing a single 824 Application Advice transaction.
@@ -308,21 +333,37 @@ where *option* is zero or more of
 --summarize={yes|no}  omit segment-level detail after first segment (default: no}
 ```
 
-### REST API accessing an EDI to JSON Microservice
-EDI to JSON transformations are also available via a cloud-based microservice, accessible via a RESTful API.
-The EDI input is submitted as the message body with a POST method, and the JSON is returned as the body of the response.
 
-Currently, the basic edition is available for testing and comments in pre-release version.
-A Java client included in this project show hows how to access this pre-release, currently deployed at
-https://kxfqaddyyc.execute-api.us-east-2.amazonaws.com/Preview/berryworks/edi-to-json
+## JSON to EDI (with Premium Edition)
 
-## Technical Notes
-* supports multiple interchanges, functional groups, and transactions
-* automatic syntax detection
-* very fast
-* handles large volumes
-* API supports streamed input and output
-* depends only on Java Runtime Environment 7 or later
-* intellectual property of BerryWorks Software
-* EDI parsing handled by BerryWorks Software's EDIReader
-* source code licenses are available
+A recent addition to the Premium Edition is the ability to perform the
+reverse transformation, converting JSON as shown above into EDI output. 
+
+Here is a summary of the features:
+
+* Integration options
+  - a command line tool with filename arguments and configuration options
+  - a Java API
+* Configurable EDI syntax characteristics
+  - element and sub-element delimiters
+  - segment terminator
+  - optional inclusion of line separators between segments
+* EDI standards
+  - ANSI X12 supported
+  - EDIFACT not currently supported, but can be added
+* JSON input
+  - any of the JSON variations shown above are supported
+  - segment looping structures are optional
+* Supports multiple ...
+  - transactions per functional group
+  - functional groups per interchange
+  - interchanges per file
+* Transaction, group, and interchange trailers
+  - the appropriate EDI segments are automatically generated
+  - with proper counts and control numbers
+  - for example: SE, GE, and IEA in ANSI X12
+* Conflicts with EDI syntax characters
+  - for example, a : (colon) in a data field while : is the configured sub-element delimiter
+  - handled automatically, guaranteeing structurally correct EDI output
+  - by substituting "?" for the character in conflict
+
