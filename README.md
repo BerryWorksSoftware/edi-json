@@ -43,11 +43,11 @@ described below.
 * High throughput, efficient use of resources
   - serializes EDI to JSON for arbitrarily large input streams
   - no in-memory data structures that grow in proportion to volume
-  - no disk-IO beyond reading/writing input/output streams 
+  - no disk I/O beyond reading/writing input/output streams 
   
 ## Basic and Premium Editions
 The jar provided with this project is a free and fully usable Basic Edition.
-A Premium Edition is also available for licensing. Contact json@canabrook.org for details.
+A Premium Edition is also available for licensing. Contact via GitHub or json@canabrook.org for details.
 Here is a summary of the differences.
 
 Feature | Basic  | Premium
@@ -324,31 +324,31 @@ The jar is runnable with Java 7 or later with the following command line argumen
 
 **java -jar edireader-json-5.5.4-basic.jar**   *edi-input-file*  *json-output-file* *option...*
 
-where *option* is zero or more of
-```
---formatted={yes|no}   format JSON output (default: yes)
---annotate={yes|no}  annotate JSON ouptut (default: no)
---summarize={yes|no}  omit segment-level detail after first segment (default: no}
-```
+
+Option | Values |Description  | Default
+|:-------|:-------|:-------|:-------
+--formatted=value | yes, no |format JSON output |yes
+--annotate=value | yes, no | annotate JSON output|no
+--summarize=value | yes, no |omit segment-level detail after first segment |no
 
 
 ## JSON to EDI (with Premium Edition)
 
 A recent addition to the Premium Edition is the ability to perform the
-reverse transformation, converting JSON as shown above into EDI output. 
+reverse transformation, converting JSON like that shown above into EDI output. 
 
 Here is a summary of the features:
 
 * Integration options
-  - a command line tool with filename arguments and configuration options
-  - a Java API
+  - command line tool with filename arguments and configuration options
+  - Java API
 * Configurable EDI syntax characteristics
   - element and sub-element delimiters
   - segment terminator
   - optional inclusion of line separators between segments
 * EDI standards
-  - ANSI X12 supported
-  - EDIFACT not currently supported, but can be added
+  - ANSI X12
+  - EDIFACT (not currently supported, but can be added)
 * JSON input
   - any of the JSON variations shown above are supported
   - segment looping structures are optional
@@ -357,11 +357,11 @@ Here is a summary of the features:
   - functional groups per interchange
   - interchanges per file
 * Transaction, group, and interchange trailers
-  - the appropriate EDI segments are automatically generated
+  - appropriate EDI segments are automatically generated
   - with proper counts and control numbers
-  - for example: SE, GE, and IEA in ANSI X12
-* Conflicts with EDI syntax characters
-  - for example, a : (colon) in a data field while : is the configured sub-element delimiter
+  - for example: SE, GE, and IEA segments in ANSI X12
+* Resolves conflicts with EDI syntax characters
+  - for example, a : (colon) in a data field when : is the configured sub-element delimiter
   - handled automatically, guaranteeing structurally correct EDI output
   - by substituting "?" for the character in conflict
 
