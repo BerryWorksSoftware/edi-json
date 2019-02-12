@@ -1,10 +1,10 @@
-[Intro](#edi-to-json)
-| [Features](#feature-summary)
+[Intro](#edi---json-and-json---edi)
+| [Features](#feature-summary-for-edi-to-json)
 | [Editions](#basic-and-premium-editions)
 | [Example](#a-small-example)
 | [Command Line](#command-line-interface)
-| [RESTful API](#rest-api-accessing-an-edi-to-json-microservice)
-| [Notes](#technical-notes)
+| [JSON to EDI](#json-to-edi-with-premium-edition)
+
 
 # EDI -> JSON and JSON -> EDI
 EDI transactions can be transformed, or *serialized*, into JSON objects to simplify processing and/or increase human readability.
@@ -12,8 +12,6 @@ This project provides a [Java program](https://github.com/BerryWorksSoftware/edi
 that illustrates how to use a Java API for transforming your EDI into JSON
 and provides a file-based [command line tool](#command-line-interface)
 in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/edireader-json-5.5.4-basic.jar). 
-There is also a [RESTful API](#rest-api-accessing-an-edi-to-json-microservice)
-to a microservice performing the same EDI to JSON transformations. 
  
 The reverse transformation, producing EDI from JSON input, is also supported in the Premium Edition
 described below.
@@ -58,7 +56,7 @@ Formatting | yes | yes
 X12        | yes | yes
 EDIFACT    | yes | yes
 Annotation | limited | extensive
-Segment loops vislble in JSON | no | yes
+Segment loops visible in JSON | no | yes
 Enhanced X12 HIPAA features| no | yes
 JSON to EDI (see below)| no | yes
   
@@ -173,7 +171,7 @@ Here is the JSON output produced by the Basic Edition with the formatting and an
 
 ```
 
-Here is the output with the Premium Edition. Notice the annotions for the individual elements and the code values, as well as the N1-1000 and OTI-2000 loops.
+Here is the output with the Premium Edition. Notice the annotations for the individual elements and the code values, as well as the N1-1000 and OTI-2000 loops.
 
 ```json
 {
