@@ -1,10 +1,11 @@
-[Intro](#edi---json-and-json---edi)
+[Intro](#edi-to-json--json-to-edi)
 | [Features](#feature-summary-for-edi-to-json)
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-small-example)
 | [837 Example](#another-example-837-health-care-claim)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
+| [EDI to YAML](#edi-to-yaml-coming-soon)
 
 
 # EDI to JSON,  JSON to EDI
@@ -15,7 +16,7 @@ and provides a file-based [command line tool](#command-line-interface)
 in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/edireader-json-5.5.4-basic.jar). 
  
 The reverse transformation, producing EDI from JSON input, is also supported in the Premium Edition
-described below.
+described below. Also, an EDI to YAML feature is coming soon for both the Basic and Premium editions.
 
 ## Feature Summary for EDI to JSON
 * Formatting
@@ -46,13 +47,14 @@ described below.
   - no in-memory data structures that grow in proportion to volume
   - no disk I/O beyond reading/writing input/output streams 
   
-[Intro](#edi---json-and-json---edi)
+[Intro](#edi-to-json--json-to-edi)
 | [Features](#feature-summary-for-edi-to-json)
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-small-example)
 | [837 Example](#another-example-837-health-care-claim)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
+| [EDI to YAML](#edi-to-yaml-coming-soon)
   
 ## Basic and Premium Editions
 The jar provided with this project is a free and fully usable Basic Edition.
@@ -68,17 +70,18 @@ Annotation | limited | extensive
 Segment loops visible in JSON | no | yes
 Enhanced X12 HIPAA features| no | yes
 JSON to EDI (see below)| no | yes
+EDI to YAML | coming soon | coming soon  
   
-  
-[Intro](#edi---json-and-json---edi)
+[Intro](#edi-to-json--json-to-edi)
 | [Features](#feature-summary-for-edi-to-json)
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-small-example)
 | [837 Example](#another-example-837-health-care-claim)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
+| [EDI to YAML](#edi-to-yaml-coming-soon)
 
-## A Small Example
+## A Simple Example
 Here is a small EDI sample, an X12 interchange containing a single 824 Application Advice transaction.
 ```
 ISA*00*          *00*          *08*9254110060     *ZZ*123456789      *041216*0805*U*00501*000095071*0*P*>~
@@ -337,15 +340,16 @@ Here is the output with the Premium Edition. Notice the annotations for the indi
 }
 ```
 
-[Intro](#edi---json-and-json---edi)
+[Intro](#edi-to-json--json-to-edi)
 | [Features](#feature-summary-for-edi-to-json)
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-small-example)
 | [837 Example](#another-example-837-health-care-claim)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
+| [EDI to YAML](#edi-to-yaml-coming-soon)
 
-## Another example: 837 Health Care Claim
+## Another Example: 837 Health Care Claim
 
 The 837 health care claim is one of the most common transactions used in new projects,
 and one of the more complex. Below is an example of an 837P (Professional) version 005010.
@@ -1003,13 +1007,14 @@ processing the transactions.
 }
 ```
 
-[Intro](#edi---json-and-json---edi)
+[Intro](#edi-to-json--json-to-edi)
 | [Features](#feature-summary-for-edi-to-json)
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-small-example)
 | [837 Example](#another-example-837-health-care-claim)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
+| [EDI to YAML](#edi-to-yaml-coming-soon)
 
 ## Command Line Interface
 The jar is runnable with Java 7 or later with the following command line arguments.
@@ -1023,13 +1028,14 @@ Option | Values |Description  | Default
 --annotate=value | yes, no | annotate JSON output|no
 --summarize=value | yes, no |omit segment-level detail after first segment |no
 
-[Intro](#edi---json-and-json---edi)
+[Intro](#edi-to-json--json-to-edi)
 | [Features](#feature-summary-for-edi-to-json)
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-small-example)
 | [837 Example](#another-example-837-health-care-claim)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
+| [EDI to YAML](#edi-to-yaml-coming-soon)
 
 ## JSON to EDI (with Premium Edition)
 
@@ -1064,3 +1070,20 @@ Here is a summary of the features:
   - handled automatically, guaranteeing structurally correct EDI output
   - by substituting "?" for the character in conflict
 
+[Intro](#edi-to-json--json-to-edi)
+| [Features](#feature-summary-for-edi-to-json)
+| [Editions](#basic-and-premium-editions)
+| [Simple Example](#a-small-example)
+| [837 Example](#another-example-837-health-care-claim)
+| [Command Line Interface](#command-line-interface)
+| [JSON to EDI](#json-to-edi-with-premium-edition)
+| [EDI to YAML](#edi-to-yaml-coming-soon)
+
+## EDI to YAML (coming soon!)
+
+The same framework that parses EDI and serializes to JSON or XML can also easily generate a YAML
+expression of EDI input as well.
+While EDI content accessible as JSON or XML is useful to simplify processing,
+the YAML representation is advantageous for a human-readability, especially with the descriptive annotations available.
+
+This features is in active development. If you are interested becoming a pilot user, please let us know.
