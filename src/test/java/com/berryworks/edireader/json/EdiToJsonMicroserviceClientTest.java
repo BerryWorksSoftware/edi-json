@@ -1,35 +1,34 @@
 package com.berryworks.edireader.json;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.junit.Ignore;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.junit.Test;
-
-import com.berryworks.edireader.benchmark.EDITestData;
-
 import static com.berryworks.edireader.json.ResourceUtil.getResourceAsString;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Illustrates and tests the EDI to JSON transformation deployed as a microservice
+ * via Amazon's AWS Lambda.
+ *
+ * The particular service referenced in this test is simply an example and may not be
+ * consistently available (hence the @Ignore). If you are interested in BerryWorks hosting
+ * a service of this type on your behalf, with appropriate authentication and security,
+ * please contact json@canabrook.org.
+ */
 public class EdiToJsonMicroserviceClientTest {
-
-    public static final String SERVER = "kxfqaddyyc.execute-api.us-east-2.amazonaws.com";
-    public static final String CONTEXT_PATH = "Preview/berryworks";
-    public static final String SERVICE = "edi-to-json";
-
+    private static final String SERVER = "kxfqaddyyc.execute-api.us-east-2.amazonaws.com";
+    private static final String CONTEXT_PATH = "Preview/berryworks";
+    private static final String SERVICE = "edi-to-json";
     private EdiToJsonMicroserviceClient client;
     private HttpResponse response;
 
-    @Test
-    public void canConstruct() {
-        client = new EdiToJsonMicroserviceClient(SERVER, CONTEXT_PATH, SERVICE);
-        assertEquals(SERVER, client.getServer());
-        assertEquals(CONTEXT_PATH, client.getContextPath());
-        assertEquals(SERVICE, client.getService());
-    }
-
+    @Ignore
     @Test
     public void canExecuteWithEdiString() throws IOException {
         // Setup
@@ -48,6 +47,7 @@ public class EdiToJsonMicroserviceClientTest {
         assertEquals(expected, actual);
     }
 
+    @Ignore
     @Test
     public void canExecuteWithEdifact() throws IOException {
         // Setup
@@ -64,22 +64,6 @@ public class EdiToJsonMicroserviceClientTest {
         final String actual = asString(entity.getContent());
         final String expected = getResourceAsString("INVOIC.json");
         assertEquals(expected, actual);
-    }
-
-    @Test
-    public void canExecuteWithSize21K() throws IOException {
-        // Setup
-        client = new EdiToJsonMicroserviceClient(SERVER, CONTEXT_PATH, SERVICE);
-        String ediText = EDITestData.getAnsiInterchange(36);
-        System.out.println("EDI input of size " + (ediText.length() / 1000.0) + " K");
-
-        // Call the microservice
-        response = client.execute(ediText);
-
-        // Confirm response
-        assertEquals(502, response.getStatusLine().getStatusCode());
-        final HttpEntity entity = response.getEntity();
-        assertEquals("application/json", entity.getContentType().getValue());
     }
 
     private String asString(InputStream inputStream) throws IOException {
