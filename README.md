@@ -1020,7 +1020,7 @@ processing the transactions.
 ## Command Line Interface
 The jar is runnable with Java 7 or later with the following command line arguments.
 
-**java -jar edireader-json-basic-5.5.4.jar**   *edi-input-file*  *json-output-file* *option...*
+**java -jar edireader-json-basic-5.5.13.jar**   *edi-input-file*  *json-output-file* *option...*
 
 
 Option | Values |Description  | Default
