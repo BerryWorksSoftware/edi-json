@@ -13,7 +13,8 @@ EDI transactions can be transformed, or *serialized*, into JSON objects to simpl
 This project provides a [Java program](https://github.com/BerryWorksSoftware/edi-json/blob/master/src/main/java/com/berryworks/edireader/json/EdiToJsonDriver.java)
 that illustrates how to use a Java API for transforming your EDI into JSON
 and provides a file-based [command line tool](#command-line-interface)
-in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/edireader-json-5.5.4-basic.jar). 
+in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/repo/com/berryworks/edireader-json-basic/5.5.4/edireader-json-basic-5.5.4.jar)
+that is provided for installation at your site.
  
 The reverse transformation, producing EDI from JSON input, is also supported in the Premium Edition
 described below. Also, an EDI to YAML feature is coming soon for both the Basic and Premium editions.
@@ -1019,12 +1020,12 @@ processing the transactions.
 ## Command Line Interface
 The jar is runnable with Java 7 or later with the following command line arguments.
 
-**java -jar edireader-json-5.5.4-basic.jar**   *edi-input-file*  *json-output-file* *option...*
+**java -jar edireader-json-basic-5.5.4.jar**   *edi-input-file*  *json-output-file* *option...*
 
 
 Option | Values |Description  | Default
 |:-------|:-------|:-------|:-------
---formatted=value | yes, no |format JSON output |yes
+--format=value | yes, no |format JSON output |yes
 --annotate=value | yes, no | annotate JSON output|no
 --summarize=value | yes, no |omit segment-level detail after first segment |no
 
