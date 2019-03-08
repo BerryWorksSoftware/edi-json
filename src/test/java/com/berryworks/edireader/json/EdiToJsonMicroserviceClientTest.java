@@ -77,7 +77,7 @@ public class EdiToJsonMicroserviceClientTest {
         response = client.execute(ediText);
 
         // Confirm response
-        assertEquals(200, response.getStatusLine().getStatusCode());
+        assertEquals(502, response.getStatusLine().getStatusCode());
         final HttpEntity entity = response.getEntity();
         assertEquals("application/json", entity.getContentType().getValue());
     }
