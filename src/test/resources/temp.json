@@ -1,0 +1,159 @@
+{
+  "interchanges": [
+    {
+      "UNB_01_SyntaxIdentifier": {
+        "UNB_01_01_SyntaxIdentifier": "UNOA",
+        "UNB_01_02_SyntaxVersionNumber": "1"
+      },
+      "UNB_02_InterchangeSender": {
+        "UNB_02_01_InterchangeSenderIdentification": "005435656",
+        "UNB_02_02_IdentificationCodeQualifier": "1"
+      },
+      "UNB_03_InterchangeReceiver": {
+        "UNB_03_01_InterchangeReceiverIdentification": "006415160CFS",
+        "UNB_03_02_IdentificationCodeQualifier": "1"
+      },
+      "UNB_04_DateAndTimeOfPreparation": {
+        "UNB_04_01_Date": "000210",
+        "UNB_04_02_Time": "1434"
+      },
+      "UNB_05_InterchangeControlReference": "00000000000778",
+      "transactions": [
+        {
+          "UNH_01_MessageReferenceNumber": "00000000000117",
+          "UNH_02_MessageIdentifier": {
+            "UNH_02_01_MessageType": "INVOIC",
+            "UNH_02_02_MessageVersionNumber": "D",
+            "UNH_02_03_MessageReleaseNumber": "93A",
+            "UNH_02_04_ControllingAgency": "UN"
+          },
+          "segments": [
+            {
+              "BGM_01": "380",
+              "BGM_02": "342459",
+              "BGM_03": "9"
+            },
+            {
+              "DTM_01": {
+                "DTM_01_01": "3",
+                "DTM_01_02": "20000202",
+                "DTM_01_03": "102"
+              }
+            },
+            {
+              "RFF_01": {
+                "RFF_01_01": "ON",
+                "RFF_01_02": "608133"
+              }
+            },
+            {
+              "NAD_01": "BY",
+              "NAD_02": {
+                "NAD_02_01": "006415160",
+                "NAD_02_03": "16"
+              },
+              "NAD_04": "CUMMINS ENGINE"
+            },
+            {
+              "NAD_01": "SE",
+              "NAD_02": {
+                "NAD_02_01": "005435656",
+                "NAD_02_03": "16"
+              },
+              "NAD_04": "GENERAL WIDGET COMPANY"
+            },
+            {
+              "CUX_01": {
+                "CUX_01_01": "1",
+                "CUX_01_02": "USD"
+              }
+            },
+            {
+              "LIN_01": "1",
+              "LIN_03": {
+                "LIN_03_01": "157870",
+                "LIN_03_02": "IN"
+              }
+            },
+            {
+              "IMD_01": "F",
+              "IMD_03": {
+                "IMD_03_04": "WIDGET"
+              }
+            },
+            {
+              "QTY_01": {
+                "QTY_01_01": "47",
+                "QTY_01_02": "1020",
+                "QTY_01_03": "EA"
+              }
+            },
+            {
+              "MOA_01": {
+                "MOA_01_01": "203",
+                "MOA_01_02": "1202.48"
+              }
+            },
+            {
+              "PRI_01": {
+                "PRI_01_01": "INV",
+                "PRI_01_02": "1.179"
+              }
+            },
+            {
+              "LIN_01": "2",
+              "LIN_03": {
+                "LIN_03_01": "157871",
+                "LIN_03_02": "IN"
+              }
+            },
+            {
+              "IMD_01": "F",
+              "IMD_03": {
+                "IMD_03_04": "DIFFERENT WIDGET"
+              }
+            },
+            {
+              "QTY_01": {
+                "QTY_01_01": "47",
+                "QTY_01_02": "20",
+                "QTY_01_03": "BX"
+              }
+            },
+            {
+              "MOA_01": {
+                "MOA_01_01": "203",
+                "MOA_01_02": "410"
+              }
+            },
+            {
+              "PRI_01": {
+                "PRI_01_01": "INV",
+                "PRI_01_02": "20.5"
+              }
+            },
+            {
+              "UNS_01": "S"
+            },
+            {
+              "MOA_01": {
+                "MOA_01_01": "39",
+                "MOA_01_02": "1617.73"
+              }
+            },
+            {
+              "ALC_01": "C",
+              "ALC_05": "FC"
+            },
+            {
+              "MOA_01": {
+                "MOA_01_01": "8",
+                "MOA_01_02": "5.25"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

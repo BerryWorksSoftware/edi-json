@@ -1,12 +1,14 @@
 package com.berryworks.edireader.json;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import com.berryworks.edireader.benchmark.EDITestData;
 
 import static com.berryworks.edireader.json.ResourceUtil.getResourceAsString;
 import static org.junit.Assert.assertEquals;
@@ -44,6 +46,40 @@ public class EdiToJsonMicroserviceClientTest {
         final String actual = asString(entity.getContent());
         final String expected = getResourceAsString("824.json");
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void canExecuteWithEdifact() throws IOException {
+        // Setup
+        client = new EdiToJsonMicroserviceClient(SERVER, CONTEXT_PATH, SERVICE);
+        String ediText = getResourceAsString("INVOIC.edi");
+
+        // Call the microservice
+        response = client.execute(ediText);
+
+        // Confirm response
+        assertEquals(200, response.getStatusLine().getStatusCode());
+        final HttpEntity entity = response.getEntity();
+        assertEquals("application/json", entity.getContentType().getValue());
+        final String actual = asString(entity.getContent());
+        final String expected = getResourceAsString("INVOIC.json");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void canExecuteWithSize21K() throws IOException {
+        // Setup
+        client = new EdiToJsonMicroserviceClient(SERVER, CONTEXT_PATH, SERVICE);
+        String ediText = EDITestData.getAnsiInterchange(36);
+        System.out.println("EDI input of size " + (ediText.length() / 1000.0) + " K");
+
+        // Call the microservice
+        response = client.execute(ediText);
+
+        // Confirm response
+        assertEquals(200, response.getStatusLine().getStatusCode());
+        final HttpEntity entity = response.getEntity();
+        assertEquals("application/json", entity.getContentType().getValue());
     }
 
     private String asString(InputStream inputStream) throws IOException {
