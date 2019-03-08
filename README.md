@@ -13,7 +13,7 @@ EDI transactions can be transformed, or *serialized*, into JSON objects to simpl
 This project provides a [Java program](https://github.com/BerryWorksSoftware/edi-json/blob/master/src/main/java/com/berryworks/edireader/json/EdiToJsonDriver.java)
 that illustrates how to use a Java API for transforming your EDI into JSON
 and provides a file-based [command line tool](#command-line-interface)
-in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/repo/com/berryworks/edireader-json-basic/5.5.4/edireader-json-basic-5.5.4.jar)
+in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/repo/com/berryworks/edireader-json-basic/5.5.13/edireader-json-basic-5.5.13.jar)
 that is provided for installation at your site.
  
 The reverse transformation, producing EDI from JSON input, is also supported in the Premium Edition
