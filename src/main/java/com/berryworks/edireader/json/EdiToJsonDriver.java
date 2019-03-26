@@ -1,5 +1,7 @@
 package com.berryworks.edireader.json;
 
+import com.berryworks.edireader.json.fromedi.EdiToJson;
+
 import java.io.*;
 
 public class EdiToJsonDriver implements Runnable {
