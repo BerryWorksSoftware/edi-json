@@ -1,5 +1,15 @@
 # Release Notes
 
+### 5.5.14 - July 17, 2019
+
+* Feature: Improved support for repeated elements within a segment. Repeated elements are rarely used in X12
+but do appear in a few places. For example, the EB-03 element may be repeated in the EB segment of a 271
+(Eligibility, Coverage or Benefit Information) transacton set.
+With this release, unique JSON keys are generated using the repetition number. This avoids duplicate keys
+in a JSON map.
+* Fix: With some HIPAA transaction sets, such as the 271, a RuntimeException was thrown: 
+> Could not find queued element loop for putAttribute()
+
 ### 5.5.13 - March 8, 2019
 
 * Feature: Use JSON escape sequences when necessary
