@@ -3,6 +3,7 @@
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
+| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
@@ -53,31 +54,37 @@ described below. Also, an EDI to YAML feature is coming soon for both the Basic 
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
+| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
   
-## Basic and Premium Editions
+## Editions: Basic, Premium, and Premium-837
 The jar provided with this project is a free and fully usable Basic Edition.
-A Premium Edition is also available for licensing. Contact via GitHub or json@canabrook.org for details.
+A Premium Edition is also available for licensing,
+as well as a Premium-837 which includes validation and balancing tools
+specifically for 837 Health Care Claims.
+Contact via GitHub or json@canabrook.org for details.
 Here is a summary of the differences.
 
-Feature | Basic  | Premium
-|:-------|:-------|:-------
-Formatting | yes | yes
-X12        | yes | yes
-EDIFACT    | yes | yes
-Annotation | limited | extensive
-Segment loops visible in JSON | no | yes
-Enhanced X12 HIPAA features| no | yes
-JSON to EDI (see below)| no | yes
-EDI to YAML | coming soon | coming soon  
+Feature | Basic  | Premium | Premium-837
+|:-------|:-------|:-------|:-------
+Formatting | yes | yes| yes
+X12        | yes | yes| yes
+EDIFACT    | yes | yes| yes
+Annotation | limited | extensive | extensive
+Segment loops visible in JSON | no | yes| yes
+Enhanced X12 HIPAA features| no | yes| yes
+JSON to EDI (see below)| no | yes| yes
+Validation of 837-5010 | no | no | yes 
+Claim balancing 837-5010 | no | no | yes 
   
 [Intro](#edi-to-json--json-to-edi)
 | [Features](#feature-summary-for-edi-to-json)
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
+| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
@@ -346,6 +353,7 @@ Here is the output with the Premium Edition. Notice the annotations for the indi
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
+| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
@@ -1013,9 +1021,39 @@ processing the transactions.
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
+| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
+
+## 837 Validating and Balancing Add-on
+
+The X12 837 Health Care Claim is a very common transaction set converted to/from JSON
+and perhaps the most complex. The 837 add-on to the Premium Edition brings two additioanl tools
+useful when handling health care claims. These tools are supported for version 005010
+of the 837P (Professional),
+837I (Institutional), and 837D (Dental).
+
+* Detailed EDI validation
+  - Unexpected or invalid segment type
+  - Required segment missing
+  - Too many repetitions of a segment
+  - Required element missing
+  - Element value too long or too short
+  - Element value not consistent with data type
+  - Element value not defined in code list
+  - Required loop missing
+  - Too many repetitions of a loop
+  - Enveloping error with ISA, GS, ST, SE, GE, or IEA
+* Balancing monetary amounts within a claim
+  - Total claim amount with sum of line item charges
+  - Line item charge with the sum of adjudication and adjustments for that item
+  - Coordination of benefits involving primary and secondary payers and patient payments
+
+The 837 add-on is provided as a separate command line tool that accepts filename arguments for the
+EDI input and an output file for a text report like the one shown below.
+
+(sample report goes here)
 
 ## Command Line Interface
 The jar is runnable with Java 7 or later with the following command line arguments.
@@ -1034,6 +1072,7 @@ Option | Values |Description  | Default
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
+| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
@@ -1076,6 +1115,7 @@ Here is a summary of the features:
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
+| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
