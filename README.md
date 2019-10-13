@@ -1029,8 +1029,8 @@ processing the transactions.
 ## 837 Validating and Balancing Add-on
 
 The X12 837 Health Care Claim is a very common transaction set converted to/from JSON
-and perhaps the most complex. The 837 add-on to the Premium Edition brings two additioanl tools
-useful when handling health care claims. These tools are supported for version 005010
+and perhaps the most complex. The 837 add-on to the Premium Edition brings two additional features
+useful when handling health care claims. This tool is supported for version 005010
 of the 837P (Professional),
 837I (Institutional), and 837D (Dental).
 
@@ -1054,6 +1054,17 @@ The 837 add-on is provided as a separate command line tool that accepts filename
 EDI input and an output file for a text report like the one shown below.
 
 (sample report goes here)
+
+
+[Intro](#edi-to-json--json-to-edi)
+| [Features](#feature-summary-for-edi-to-json)
+| [Editions](#basic-and-premium-editions)
+| [Simple Example](#a-simple-example)
+| [837 Example](#another-example-837-health-care-claim)
+| [837 Validation](#837-validating-and-balancing-add-on)
+| [Command Line Interface](#command-line-interface)
+| [JSON to EDI](#json-to-edi-with-premium-edition)
+| [EDI to YAML](#edi-to-yaml-coming-soon)
 
 ## Command Line Interface
 The jar is runnable with Java 7 or later with the following command line arguments.
