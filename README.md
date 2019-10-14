@@ -17,8 +17,11 @@ and provides a file-based [command line tool](#command-line-interface)
 in the form of a [runnable jar](https://github.com/BerryWorksSoftware/edi-json/blob/master/repo/com/berryworks/edireader-json-basic/5.5.13/edireader-json-basic-5.5.13.jar)
 that is provided for installation at your site.
  
-The reverse transformation, producing EDI from JSON input, is also supported in the Premium Edition
-described below. Also, an EDI to YAML feature is coming soon for both the Basic and Premium editions.
+The reverse transformation, producing EDI from JSON input, is supported in the Premium Edition
+described below. An add-on specific to the 837 Health Care Claim is available with the Premium Edition
+to validate and analyze a claim. 
+
+An EDI to YAML feature is coming soon for both the Basic and Premium editions.
 
 ## Feature Summary for EDI to JSON
 * Formatting
@@ -1028,11 +1031,11 @@ processing the transactions.
 
 ## 837 Validating and Balancing Add-on
 
-The X12 837 Health Care Claim is a very common transaction set converted to/from JSON
-and perhaps the most complex. The 837 add-on to the Premium Edition brings two additional features
-useful when handling health care claims. This tool is supported for version 005010
-of the 837P (Professional),
-837I (Institutional), and 837D (Dental).
+The 837 add-on to the Premium Edition brings two additional features
+useful when handling health care claims: detailed EDI validation and claim-level balancing.
+
+This tool is supported for version 005010
+of the 837P (Professional), 837I (Institutional), and 837D (Dental).
 
 * Detailed EDI validation
   - Unexpected or invalid segment type
