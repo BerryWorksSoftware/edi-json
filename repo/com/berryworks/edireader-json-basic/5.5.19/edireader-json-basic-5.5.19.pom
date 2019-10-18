@@ -4,5 +4,5 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.berryworks</groupId>
   <artifactId>edireader-json-basic</artifactId>
-  <version>5.5.4</version>
+  <version>5.5.19</version>
 </project>
