@@ -3,7 +3,6 @@
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
-| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
@@ -57,7 +56,6 @@ An EDI to YAML feature is coming soon for both the Basic and Premium editions.
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
-| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
@@ -356,7 +354,6 @@ Here is the output with the Premium Edition. Notice the annotations for the indi
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
-| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
@@ -1024,87 +1021,11 @@ processing the transactions.
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
-| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
 
-## 837 Validating and Balancing Add-on
 
-The 837 add-on to the Premium Edition brings two additional features
-useful when handling health care claims: detailed EDI validation and claim-level balancing.
-
-This tool is supported for version 005010
-of the 837P (Professional), 837I (Institutional), and 837D (Dental).
-
-* Detailed EDI validation
-  - Unexpected or invalid segment type
-  - Required segment missing
-  - Too many repetitions of a segment
-  - Required element missing
-  - Element value too long or too short
-  - Element value not consistent with data type
-  - Element value not defined in code list
-  - Required loop missing
-  - Too many repetitions of a loop
-  - Enveloping error with ISA, GS, ST, SE, GE, or IEA
-* Balancing monetary amounts within a claim
-  - Total claim amount with sum of line item charges
-  - Line item charge with the sum of adjudication and adjustments for that item
-  - Coordination of benefits involving primary and secondary payers and patient payments
-
-The 837 add-on is provided as a separate command line tool that accepts filename arguments for the
-EDI input and an output file for a text report like the one shown below (this example does not correspond to the sample 837 above).
-
-```
-Validating EDI data
-
-*** Segment PER-1000A at position 4 in transaction 1 within functional group 1. Data element PER-1 with value |??| is not in the set of valid codes
-*** Enveloping error: Transaction count error in GE segment. Expected 1 instead of 111 at segment 45, field 2
-2 errors detected
-
-Verifying balance of claims in 837 with control number 0024
-
-Subscriber information from SBR in HL-2000:
-  Payer responsibility: Secondary (S)
-  Plan type: Commercial Insurance Co. (CI)
-
-Claim 26407789
-Total claim amount     $79.04
-
-Other subscriber information from SBR in SBR-2320:
-  Payer responsibility: Primary (P)
-  Relationship to insured: Spouse (01)
-  Plan type: Commercial Insurance Co. (CI)
-
-Claim-level adjustments from CAS segments in SBR-2320:
-  Patient Responsibility (PR)  $21.89
-  Patient Responsibility (PR)  $15
-COB Payer Paid (AMT*D): $39.15
-Owed (AMT*EAF):         $36.89
-
-Line Items (LX)
-  Line item 1: $43
-    adjudication:
-      $40  paid by primary payer
-    adjustments in CAS segments:
-      $3  Contractual Obligations (CO)  Charges exceed our fee schedule or maximum allowable amount (42)
-    verified balance within line-item
-  Line item 2: $15
-    adjudication:
-      $15  paid by primary payer
-    verified balance within line-item
-  Line item 3: $21.04
-    adjudication:
-      $21.04  paid by primary payer
-    verified balance within line-item
-
-Balance total claim amount (CLM02) with line item charges (SV102, SV202)
-  verified
-Balance coordination of benefits
-  verified
-
-```
 
 
 [Intro](#edi-to-json--json-to-edi)
@@ -1112,7 +1033,6 @@ Balance coordination of benefits
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
-| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
@@ -1177,7 +1097,6 @@ Here is a summary of the features:
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
-| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
