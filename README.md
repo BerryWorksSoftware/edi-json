@@ -63,7 +63,7 @@ An EDI to YAML feature is coming soon for both the Basic and Premium editions.
 ## Editions: Basic, Premium, and Premium-837
 The jar provided with this project is a free and fully usable Basic Edition.
 A Premium Edition is also available for licensing,
-as well as a Premium-837 which includes validation and balancing tools
+as well as a Premium-837 which includes balancing tools
 specifically for 837 Health Care Claims.
 Contact via GitHub or json@canabrook.org for details.
 Here is a summary of the differences.
