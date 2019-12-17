@@ -18,7 +18,7 @@ that is provided for installation at your site.
  
 The reverse transformation, producing EDI from JSON input, is supported in the Premium Edition
 described below. An add-on specific to the 837 Health Care Claim is available with the Premium Edition
-to validate and analyze a claim. 
+to analyze a claim for dollar balancing. 
 
 An EDI to YAML feature is coming soon for both the Basic and Premium editions.
 
@@ -77,7 +77,6 @@ Annotation | limited | extensive | extensive
 Segment loops visible in JSON | no | yes| yes
 Enhanced X12 HIPAA features| no | yes| yes
 JSON to EDI (see below)| no | yes| yes
-Validation of 837-5010 | no | no | yes 
 Claim balancing 837-5010 | no | no | yes 
   
 [Intro](#edi-to-json--json-to-edi)
@@ -85,7 +84,6 @@ Claim balancing 837-5010 | no | no | yes
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
-| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
@@ -1025,18 +1023,6 @@ processing the transactions.
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
 
-
-
-
-[Intro](#edi-to-json--json-to-edi)
-| [Features](#feature-summary-for-edi-to-json)
-| [Editions](#basic-and-premium-editions)
-| [Simple Example](#a-simple-example)
-| [837 Example](#another-example-837-health-care-claim)
-| [Command Line Interface](#command-line-interface)
-| [JSON to EDI](#json-to-edi-with-premium-edition)
-| [EDI to YAML](#edi-to-yaml-coming-soon)
-
 ## Command Line Interface
 The jar is runnable with Java 7 or later with the following command line arguments.
 
@@ -1054,7 +1040,6 @@ Option | Values |Description  | Default
 | [Editions](#basic-and-premium-editions)
 | [Simple Example](#a-simple-example)
 | [837 Example](#another-example-837-health-care-claim)
-| [837 Validation](#837-validating-and-balancing-add-on)
 | [Command Line Interface](#command-line-interface)
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
