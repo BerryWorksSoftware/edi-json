@@ -6,13 +6,14 @@ import java.io.*;
 
 public class EdiToJsonDriver implements Runnable {
     private File ediFile, jsonFile;
-    private boolean summarize, annotate, format;
+    private boolean summarize, annotate, format, recover;
 
     public EdiToJsonDriver() {
         // Set defaults for options
         summarize = false;
         annotate = false;
         format = true;
+        recover = false;
     }
 
     public void setInputFile(File ediFile) {
@@ -29,6 +30,7 @@ public class EdiToJsonDriver implements Runnable {
         ediToJson.setFormatting(format);
         ediToJson.setAnnotated(annotate);
         ediToJson.setSummarize(summarize);
+//        ediToJson.setRecover(recover);
         try (Reader reader = new BufferedReader(ediFile == null ? new InputStreamReader(System.in) : new FileReader(ediFile));
              Writer writer = new BufferedWriter(jsonFile == null ? new OutputStreamWriter(System.out) : new FileWriter(jsonFile))) {
             ediToJson.asJson(reader, writer);
@@ -64,6 +66,9 @@ public class EdiToJsonDriver implements Runnable {
                         break;
                     case "--format":
                         driver.setFormat("yes".equalsIgnoreCase(yesOrNo));
+                        break;
+                    case "--recover":
+                        driver.setRecover("yes".equalsIgnoreCase(yesOrNo));
                         break;
                     default:
                         badArgs();
@@ -117,6 +122,7 @@ public class EdiToJsonDriver implements Runnable {
         log("  ", "--summarize={yes|no}", ":", "if yes, omit segment-level detail (default is no)");
         log("  ", "--annotate={yes|no}", ":", "if yes, include descriptive \"annotations\" (default is no)");
         log("  ", "--format={yes|no}", ":", "if yes, format JSON output (default is yes)");
+        log("  ", "--recover={yes|no}", ":", "if yes, ignore any recoverable EDI errors (default is no)");
         log();
     }
 
@@ -141,5 +147,9 @@ public class EdiToJsonDriver implements Runnable {
 
     private void setFormat(boolean format) {
         this.format = format;
+    }
+
+    public void setRecover(boolean recover) {
+        this.recover = recover;
     }
 }
