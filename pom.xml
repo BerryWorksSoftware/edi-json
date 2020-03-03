@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.berryworks</groupId>
             <artifactId>edireader-json-basic</artifactId>
-            <version>5.5.19</version>
+            <version>5.6.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
