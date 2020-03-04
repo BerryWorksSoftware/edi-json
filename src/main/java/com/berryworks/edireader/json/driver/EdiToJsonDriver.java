@@ -30,7 +30,9 @@ public class EdiToJsonDriver implements Runnable {
         ediToJson.setFormatting(format);
         ediToJson.setAnnotated(annotate);
         ediToJson.setSummarize(summarize);
-//        ediToJson.setRecover(recover);
+        if (recover) {
+            ediToJson.setRecover();
+        }
         try (Reader reader = new BufferedReader(ediFile == null ? new InputStreamReader(System.in) : new FileReader(ediFile));
              Writer writer = new BufferedWriter(jsonFile == null ? new OutputStreamWriter(System.out) : new FileWriter(jsonFile))) {
             ediToJson.asJson(reader, writer);
