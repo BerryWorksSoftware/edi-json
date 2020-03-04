@@ -1034,6 +1034,7 @@ Option | Values |Description  | Default
 --format=value | yes, no |format JSON output |yes
 --annotate=value | yes, no | annotate JSON output|no
 --summarize=value | yes, no |omit segment-level detail after first segment |no
+--recover=value | yes, no |continue after recoverable errors in EDI input |no
 
 [Intro](#edi-to-json--json-to-edi)
 | [Features](#feature-summary-for-edi-to-json)
