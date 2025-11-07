@@ -7,6 +7,10 @@
 | [JSON to EDI](#json-to-edi-with-premium-edition)
 | [EDI to YAML](#edi-to-yaml-coming-soon)
 
+**News Flash**: While this repository has been quiet for a while, the underlying EDI framework has been actively maintained and enhanced.
+It is now the "EDI engine" within a new REST API providing these same EDI to JSON services plus much more, packaged for use on-premise
+to allow easy integration into your EDI workflows without transmitting data beyond your secured environment. 
+Try it out at https://github.com/RBMayberry/BerryWave-EDI-API/
 
 # EDI to JSON,  JSON to EDI
 EDI transactions can be transformed, or *serialized*, into JSON objects to simplify processing and/or increase human readability.
@@ -19,8 +23,6 @@ that is provided for installation at your site.
 The reverse transformation, producing EDI from JSON input, is supported in the Premium Edition
 described below. An add-on specific to the 837 Health Care Claim is available with the Premium Edition
 to analyze a claim for dollar balancing. 
-
-An EDI to YAML feature is coming soon for both the Basic and Premium editions.
 
 ## Feature Summary for EDI to JSON
 * Formatting
