@@ -1,16 +1,15 @@
-package com.berryworks.edireader.json.driver;
+package com.berryworks.edireader.json.commandline;
 
 import com.berryworks.edireader.json.fromedi.EdiToJson;
 
 import java.io.*;
 
-public class EdiToJsonDriver implements Runnable {
+public class EdiToJsonCli implements Runnable {
     private File ediFile, jsonFile;
-    private boolean summarize, annotate, format, recover;
+    private boolean annotate, format, recover;
 
-    public EdiToJsonDriver() {
+    public EdiToJsonCli() {
         // Set defaults for options
-        summarize = false;
         annotate = false;
         format = true;
         recover = false;
@@ -29,7 +28,6 @@ public class EdiToJsonDriver implements Runnable {
         final EdiToJson ediToJson = new EdiToJson();
         ediToJson.setFormatting(format);
         ediToJson.setAnnotated(annotate);
-        ediToJson.setSummarize(summarize);
         if (recover) {
             ediToJson.setRecover();
         }
@@ -43,7 +41,7 @@ public class EdiToJsonDriver implements Runnable {
 
     public static void main(String[] args) {
 
-        final EdiToJsonDriver driver = new EdiToJsonDriver();
+        final EdiToJsonCli driver = new EdiToJsonCli();
 
         // Args beginning with "--" are treated as options.
         // The first arg not beginning with "--" is the name of the input file.
@@ -60,9 +58,6 @@ public class EdiToJsonDriver implements Runnable {
                 String optionName = split[0];
                 String yesOrNo = split[1];
                 switch (optionName) {
-                    case "--summarize":
-                        driver.setSummarize("yes".equalsIgnoreCase(yesOrNo));
-                        break;
                     case "--annotate":
                         driver.setAnnotate("yes".equalsIgnoreCase(yesOrNo));
                         break;
@@ -103,44 +98,41 @@ public class EdiToJsonDriver implements Runnable {
     }
 
     private static void logUsage() {
-        log();
-        log("Usage Summary");
-        log("=============");
-        log();
-        log("Read EDI from an input file, write JSON to an output file");
-        log("  java -jar <jarFileName>  <ediInputFile>  <jsonOutputFile>  <options>");
-        log();
-        log("Read EDI from an input file, write JSON to stdout");
-        log("  java -jar <jarFileName>  <ediInputFile>  <options>");
-        log();
-        log("Read EDI from stdin, write JSON to stdout");
-        log("  java -jar <jarFileName>  <options>");
-        log();
-        log("Display this usage summary");
-        log("  java -jar <jarFileName>  help");
-        log();
-        log();
-        log("options");
-        log("  ", "--summarize={yes|no}", ":", "if yes, omit segment-level detail (default is no)");
-        log("  ", "--annotate={yes|no}", ":", "if yes, include descriptive \"annotations\" (default is no)");
-        log("  ", "--format={yes|no}", ":", "if yes, format JSON output (default is yes)");
-        log("  ", "--recover={yes|no}", ":", "if yes, ignore any recoverable EDI errors (default is no)");
-        log();
+        log("""
+                
+                Usage Summary
+                =============
+                
+                Read EDI from an input file, write JSON to an output file
+                  java -jar <jarFileName>  <ediInputFile>  <jsonOutputFile>  <options>
+                
+                Read EDI from an input file, write JSON to stdout
+                  java -jar <jarFileName>  <ediInputFile>  <options>
+                
+                Read EDI from stdin, write JSON to stdout
+                  java -jar <jarFileName>  <options>
+                
+                Display this usage summary
+                  java -jar <jarFileName>  help
+                
+                
+                options
+                   --annotate={yes|no} : if yes, include descriptive "annotations" (default is no)
+                   --format={yes|no} : if yes, format JSON output (default is yes)
+                   --recover={yes|no} : if yes, ignore any recoverable EDI errors (default is no)
+                
+                """);
     }
 
     private static void log(Object... items) {
         StringBuilder sb = new StringBuilder();
         for (Object item : items) {
-            if (sb.length() > 0) {
+            if (!sb.isEmpty()) {
                 sb.append(" ");
             }
             sb.append(item.toString());
         }
-        System.out.println(sb.toString());
-    }
-
-    private void setSummarize(boolean summarize) {
-        this.summarize = summarize;
+        System.out.println(sb);
     }
 
     private void setAnnotate(boolean annotate) {
