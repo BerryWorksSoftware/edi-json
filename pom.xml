@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <slf4j.version>2.0.17</slf4j.version>
         <junit.version>5.10.2</junit.version>
     </properties>
 
@@ -19,6 +20,13 @@
             <groupId>com.berryworks</groupId>
             <artifactId>edi-json</artifactId>
             <version>5.11.2</version>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
