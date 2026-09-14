@@ -15,7 +15,7 @@ public class EdiToJsonCliTest {
 
     @Test
     void ediToJson() throws IOException {
-        EdiToJsonCli.main(new String[]{"837.edi", "output.edi"});
+        EdiToJsonCli.main(new String[]{"src/test/resources/837.edi", "output.edi"});
         assertEquals("""
                         {
                           "interchanges": [

@@ -31,8 +31,8 @@ public class EdiToJsonCli implements Runnable {
         if (recover) {
             ediToJson.setRecover();
         }
-        try (Reader reader = new BufferedReader(ediFile == null ? new InputStreamReader(System.in) : new FileReader(ediFile));
-             Writer writer = new BufferedWriter(jsonFile == null ? new OutputStreamWriter(System.out) : new FileWriter(jsonFile))) {
+        try (Reader reader = new BufferedReader(new FileReader(ediFile));
+             Writer writer = new BufferedWriter(new FileWriter(jsonFile))) {
             ediToJson.asJson(reader, writer);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
