@@ -10,9 +10,26 @@ import java.nio.file.Path;
 /** Converts UTF-8 EDI to formatted JSON. Existing output is overwritten;
  * a failed conversion may leave partial output. */
 public class EdiToJsonCli {
+    private static final String USAGE = """
+            Usage: java -jar edi-to-json.jar <input.edi> <output.json>
+                   java -jar edi-to-json.jar --help
+
+            Convert an EDI file to JSON. Both files use UTF-8.
+            Output is formatted; annotations and error recovery are disabled.
+            Existing output is overwritten. Failed conversion may leave partial output.
+            Input and output must be different files.
+
+            -h, --help  Show this help (when used alone).
+            Exit codes: 0 success, 1 conversion/I/O failure, 2 invalid arguments.
+            """;
+
     public static void main(String[] args) {
+        if (args.length == 1 && ("--help".equals(args[0]) || "-h".equals(args[0]))) {
+            System.out.print(USAGE);
+            return;
+        }
         if (args.length != 2) {
-            System.err.println("Usage: EdiToJsonCli <input.edi> <output.json>");
+            System.err.print(USAGE);
             System.exit(2);
         }
 
